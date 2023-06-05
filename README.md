@@ -1,4 +1,4 @@
-# Nombre del juego (<- borrar y completar)
+# Bomberman
 
 ## Equipo de desarrollo
 
