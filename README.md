@@ -45,6 +45,28 @@ En el mapa, Bomberman se encontrará con distintos tipos de paredes. Todas compa
 - Son las contenedoras de los "power-ups" de cada nivel 
 - Aparecen de manera aleatoria en las posiciones libres del mapa al inciar el nivel.
 
+### Bomba
+Tal como lo indica el nombre del juego, este es el arma principal de nuestro personaje.
+
+#### Colocación
+- Se colocan en la posición actual del bomberman mediante la tecla X
+- Es el único momento donde Bomberman está en la misma celda que la bomba
+
+#### Detonación
+- En un principio, las bombas tardan 3 segundos en explotar y lo hacen de manera automática.
+- Mediante el "power-up" llamado Remoto, bomberman las puede activar cuando desee por medio de la tecla Y
+- Si también se cuenta con el "power-up" que permite poner más de una bomba a la vez, todas explotan cuando se active el remoto.
+
+#### Atravesar
+- No pueden ser atravesadas por Bomberman ni por la mayoría de enemigos
+- El único enemigo que las pueden atravesar son el Tigre 
+- Bomberman sólo las puede atravesar si tiene el "power-up" llamado Bombas
+
+#### Alcance
+- Tienen alcance de 1 bloque al principio.
+- Se puede ir aumentando 1 de alcance en cada dirección por el power-up "alcance"
+
+### Power-ups
 
 ## Otros
 
