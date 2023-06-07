@@ -88,7 +88,7 @@ Tal como lo indica el nombre del juego, este es el arma principal de nuestro per
 
 
 | Imagen | Nombre | Puntos | Velocidad | Movimiento | Cómo eliminarlo | Características extra |
-|-----------|-----------|-----------|-----------|-----------|-----------|
+|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
 | ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/c8da1438-5808-4efb-9cc5-1532f108a104)   | Valcom el Globo  | 100  | Es de N-S o E-O | Basta una exploción de bomba | No persigue. Cuando rebota cambia aleatoriamente el sentido de movimiento. |
 | ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/c8da1438-5808-4efb-9cc5-1532f108a104)   | Valcom el Globo  | 100  | Es de N-S o E-O | Basta una exploción de bomba | No persigue. Cuando rebota cambia aleatoriamente el sentido de movimiento. |
 | ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/c8da1438-5808-4efb-9cc5-1532f108a104)   | Valcom el Globo  | 100  | Es de N-S o E-O | Basta una exploción de bomba | No persigue. Cuando rebota cambia aleatoriamente el sentido de movimiento. |
