@@ -44,6 +44,7 @@ En el mapa, Bomberman se encontrará con distintos tipos de paredes. Todas compa
 - Desaparecen si les da una explosión.
 - Son las contenedoras de los "power-ups" de cada nivel 
 - Aparecen de manera aleatoria en las posiciones libres del mapa al inciar el nivel.
+- También contienen la llave para abrir la "puerta de nivel" y avanzar al siguiente.
 
 ### Bomba
 Tal como lo indica el nombre del juego, este es el arma principal de nuestro personaje.
@@ -55,7 +56,7 @@ Tal como lo indica el nombre del juego, este es el arma principal de nuestro per
 #### Detonación
 - En un principio, las bombas tardan 3 segundos en explotar y lo hacen de manera automática.
 - Mediante el "power-up" llamado Remoto, bomberman las puede activar cuando desee por medio de la tecla Y
-- Si también se cuenta con el "power-up" que permite poner más de una bomba a la vez, todas explotan cuando se active el remoto.
+- Si también se cuenta con el "power-up" que permite poner más de una bomba a la vez, van explotan de a una bomba en el orden plantado.
 
 #### Atravesar
 - No pueden ser atravesadas por Bomberman ni por la mayoría de enemigos
@@ -67,6 +68,21 @@ Tal como lo indica el nombre del juego, este es el arma principal de nuestro per
 - Se puede ir aumentando 1 de alcance en cada dirección por el power-up "alcance"
 
 ### Power-ups
+
+#### Características
+- Están activos cuando el Bomberman los recoje, por lo que desaparece del tablero.
+- No se repiten por nivel.
+
+| Imagen | Nombre | Efectos sobre Bomberman |
+|-----------|-----------|-----------|
+| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/1c7fc7c3-628c-4b95-8eda-77aa91e974f4)   | Skate  | Aumenta la velocidad de Bomberman en 1  |
+| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/9ee8b94b-4908-418b-ae5d-c521dbf4483a)   | Pase Bomba | Pueda pasar por encima de sus bombas  |
+| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/1949d0db-95d0-4fd8-993b-ab729e724264)   | Llamas | Incrementa el rango de las bombas en 1 |
+| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/f00e9a73-6c28-42da-a6f5-e6e393abb46e)  | Bombardear | Incrementa la cantidad de bombas que se pueden poner a la vez en 1 |
+| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/e79cc568-1393-4598-904e-44ef72c8967e)  | Paredes débiles | Pueda pasar por encima de las paredes débiles |
+| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/be1327e2-cc46-4211-845c-2854c0626d3e)  | Armadura | Lo hace invencible |
+| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/4535da56-7b79-462b-a854-4f79bbadbc71) | Control Remoto | Las bombas pueden ser detonadas de manera remota |
+| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/f00e9a73-6c28-42da-a6f5-e6e393abb46e)  | Bombardear | Incrementa la cantidad de bombas que se pueden poner a la vez en 1 |
 
 ## Otros
 
