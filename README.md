@@ -87,16 +87,21 @@ Tal como lo indica el nombre del juego, este es el arma principal de nuestro per
 ### Enemigos
 
 
-| Imagen | Nombre | Puntos | Velocidad | Movimiento | Cómo eliminarlo | Características extra |
+| Imagen | Nombre | Puntos | Velocidad | Movimiento | Inteligencia | Cómo eliminarlo | Características extra |
 |-----------|-----------|-----------|-----------|-----------|-----------|-----------|
-| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/c8da1438-5808-4efb-9cc5-1532f108a104)   | Valcom el Globo  | 100 | 2 (Lento) | Es de N-S o E-O | Basta una exploción de bomba | No persigue. Cuando rebota cambia aleatoriamente el sentido de movimiento. |
-| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/20c2b2ee-7e52-47f7-96ff-400342c3ec93)  | Onils la Cebolla  | 200  | 3 (Normal) | Es de N-S o E-O | Basta una exploción de bomba | Persigue sólo si está cerca. Cuando rebota cambia aleatoriamente el sentido de movimiento. Aparece cuando aparece el item "Fuego" |
-| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/9f9e3d8e-41ad-4c5b-9f97-9424b7c410ea)   | Dahl el Bloque  | 400  | 3 (Normal) | Es de N-S o E-O |  Basta una exploción de bomba | No persigue. Cuando rebota cambia aleatoriamente el sentido de movimiento. Aparece cuando aparece el item "Skate" |
-| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/ee62271b-756a-46e7-ae0e-0d44d43513a2)  | Minvo el Círculo  | 800  | 4 (Rápido) | Es de N-S o E-O | Basta una exploción de bomba | Persigue sólo si está cerca. Cuando rebota cambia aleatoriamente el sentido de movimiento. Aparece cuando aparece el item "Pase Paredes Débiles" |
-| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/bccf8f94-ddfe-4bf5-a9f2-63eb850d30f2)   | Ovape la ameba  | 1000  | Es de N-S o E-O | Basta una exploción de bomba | No persigue. Cuando rebota cambia aleatoriamente el sentido de movimiento. |
-| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/c8da1438-5808-4efb-9cc5-1532f108a104)   | Valcom el Globo  | 100  | Es de N-S o E-O | Basta una exploción de bomba | No persigue. Cuando rebota cambia aleatoriamente el sentido de movimiento.
-| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/c8da1438-5808-4efb-9cc5-1532f108a104)   | Valcom el Globo  | 100  | Es de N-S o E-O | Basta una exploción de bomba | No persigue. Cuando rebota cambia aleatoriamente el sentido de movimiento. |
-| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/c8da1438-5808-4efb-9cc5-1532f108a104)   | Valcom el Globo  | 100  | Es de N-S o E-O | Basta una exploción de bomba | No persigue. Cuando rebota cambia aleatoriamente el sentido de movimiento. |
+| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/c8da1438-5808-4efb-9cc5-1532f108a104)   | Valcom el Globo  | 100 | 2 (Lento) | Es de N-S o E-O | 1 (no persigue) | Basta una exploción de bomba | Cuando rebota cambia aleatoriamente el sentido de movimiento. |
+| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/20c2b2ee-7e52-47f7-96ff-400342c3ec93)  | Onils la Cebolla  | 200  | 3 (Normal) | Es de N-S o E-O | 2 (persigue si está cerca)  | Basta una exploción de bomba |  Cuando rebota cambia aleatoriamente el sentido de movimiento. Aparece cuando aparece el item "Fuego" |
+| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/9f9e3d8e-41ad-4c5b-9f97-9424b7c410ea)   | Dahl el Bloque  | 400  | 3 (Normal) | Es de N-S o E-O | 1 (no persigue) |  Basta una exploción de bomba | Cuando rebota cambia aleatoriamente el sentido de movimiento. Aparece cuando aparece el item "Skate" |
+| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/ee62271b-756a-46e7-ae0e-0d44d43513a2)  | Minvo el Círculo  | 800  | 4 (Rápido) | Es de N-S o E-O | 2 (persigue si está cerca) | Basta una exploción de bomba |  Cuando rebota cambia aleatoriamente el sentido de movimiento. Aparece cuando aparece el item "Pase Paredes Débiles" |
+| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/3bbb6088-50ca-44c0-aa71-e89c5a324d6d)   | Ovape la ameba  | 1000  | 1 (El más lento) | Es de N-S o E-O | 3 (persigue en cuanto te ve) | Basta una exploción de bomba | Cuando rebota cambia aleatoriamente el sentido de movimiento. Atraviesan paredes débiles y bombas. Aparece cuando aparece el item "control remoto" |
+| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/c8da1438-5808-4efb-9cc5-1532f108a104)   | Doria el fantasma  | 2000  | 2 (Lento) | Es de N-S o E-O | 2 (persigue si está cerca) | Basta una exploción de bomba | Cuando rebota cambia aleatoriamente el sentido de movimiento. Atraviesan paredes débiles. Aparece cuando aparece el item "Pase bomba" |
+| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/c0115e83-5a90-48b3-8276-3deb22e47986)   | Pass el oso  | 4000  | 4 (Rápido) | Es de N-S o E-O | 3 (persigue en cuanto te ve) | Basta una exploción de bomba | Cuando rebota cambia aleatoriamente el sentido de movimiento. Atraviesan paredes débiles y bombas. Aparece cuando aparece el item "fuego" |
+| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/c8da1438-5808-4efb-9cc5-1532f108a104)   | Pontan la moneda  | 8000  | 4 (Rápido) | Es de N-S o E-O | 3 (persigue desde más lejos) | Basta una exploción de bomba | Cuando rebota cambia aleatoriamente el sentido de movimiento.Atraviesan paredes blandas. Atacan en grupo. Aparece cuando aparece el item "invencible" |
+
+### Puerta de nivel
+- Hay solo una por nivel.
+- Al aparecer, si hay enemigos aparece cerrada.
+- Al no haber enemigos se abre y permite pasar de nivel.
 
 ## Otros
 
