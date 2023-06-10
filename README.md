@@ -76,24 +76,27 @@ Tal como lo indica el nombre del juego, este es el arma principal de nuestro per
 | Imagen | Nombre | Efectos sobre Bomberman |
 |-----------|-----------|-----------|
 | ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/1c7fc7c3-628c-4b95-8eda-77aa91e974f4)   | Skate  | Aumenta la velocidad de Bomberman en 1  |
-| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/9ee8b94b-4908-418b-ae5d-c521dbf4483a)   | Pase Bomba | Pueda pasar por encima de sus bombas  |
-| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/1949d0db-95d0-4fd8-993b-ab729e724264)   | Fuego | Incrementa el rango de las bombas en 1 |
+| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/4535da56-7b79-462b-a854-4f79bbadbc71) | Control Remoto | Las bombas pueden ser detonadas de manera remota |
 | ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/f00e9a73-6c28-42da-a6f5-e6e393abb46e)  | Bombardear | Incrementa la cantidad de bombas que se pueden poner a la vez en 1 |
+
+ESTOS NO APLICAN:
+| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/9ee8b94b-4908-418b-ae5d-c521dbf4483a)   | Pase Bomba | Pueda pasar por encima de sus bombas  |
 | ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/e79cc568-1393-4598-904e-44ef72c8967e)  | Pase Paredes débiles | Pueda pasar por encima de las paredes débiles |
 | ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/be1327e2-cc46-4211-845c-2854c0626d3e)  | Armadura | Lo hace invencible |
-| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/4535da56-7b79-462b-a854-4f79bbadbc71) | Control Remoto | Las bombas pueden ser detonadas de manera remota |
+| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/1949d0db-95d0-4fd8-993b-ab729e724264)   | Fuego | Incrementa el rango de las bombas en 1 |
 | ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/18ada76b-af3b-4158-a66c-c802cf3cfd02)  | Pase fuego | Lo hace inmune a sus bombas |
 
 ### Enemigos
 
-
 | Imagen | Nombre | Puntos | Velocidad | Movimiento | Inteligencia | Cómo eliminarlo | Características extra |
 |-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
 | ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/c8da1438-5808-4efb-9cc5-1532f108a104)   | Valcom el Globo  | 100 | 2 (Lento) | Es de N-S o E-O | 1 (no persigue) | Basta una exploción de bomba | Cuando rebota cambia aleatoriamente el sentido de movimiento. |
-| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/20c2b2ee-7e52-47f7-96ff-400342c3ec93)  | Onils la Cebolla  | 200  | 3 (Normal) | Es de N-S o E-O | 2 (persigue si está cerca)  | Basta una exploción de bomba |  Cuando rebota cambia aleatoriamente el sentido de movimiento. Aparece cuando aparece el item "Fuego" |
 | ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/9f9e3d8e-41ad-4c5b-9f97-9424b7c410ea)   | Dahl el Bloque  | 400  | 3 (Normal) | Es de N-S o E-O | 1 (no persigue) |  Basta una exploción de bomba | Cuando rebota cambia aleatoriamente el sentido de movimiento. Aparece cuando aparece el item "Skate" |
-| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/ee62271b-756a-46e7-ae0e-0d44d43513a2)  | Minvo el Círculo  | 800  | 4 (Rápido) | Es de N-S o E-O | 2 (persigue si está cerca) | Basta una exploción de bomba |  Cuando rebota cambia aleatoriamente el sentido de movimiento. Aparece cuando aparece el item "Pase Paredes Débiles" |
 | ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/3bbb6088-50ca-44c0-aa71-e89c5a324d6d)   | Ovape la ameba  | 1000  | 1 (El más lento) | Es de N-S o E-O | 3 (persigue en cuanto te ve) | Basta una exploción de bomba | Cuando rebota cambia aleatoriamente el sentido de movimiento. Atraviesan paredes débiles y bombas. Aparece cuando aparece el item "control remoto" |
+
+ESTOS NO APLICAN:
+| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/20c2b2ee-7e52-47f7-96ff-400342c3ec93)  | Onils la Cebolla  | 200  | 3 (Normal) | Es de N-S o E-O | 2 (persigue si está cerca)  | Basta una exploción de bomba |  Cuando rebota cambia aleatoriamente el sentido de movimiento. Aparece cuando aparece el item "Fuego" |
+| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/ee62271b-756a-46e7-ae0e-0d44d43513a2)  | Minvo el Círculo  | 800  | 4 (Rápido) | Es de N-S o E-O | 2 (persigue si está cerca) | Basta una exploción de bomba |  Cuando rebota cambia aleatoriamente el sentido de movimiento. Aparece cuando aparece el item "Pase Paredes Débiles" |
 | ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/c8da1438-5808-4efb-9cc5-1532f108a104)   | Doria el fantasma  | 2000  | 2 (Lento) | Es de N-S o E-O | 2 (persigue si está cerca) | Basta una exploción de bomba | Cuando rebota cambia aleatoriamente el sentido de movimiento. Atraviesan paredes débiles. Aparece cuando aparece el item "Pase bomba" |
 | ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/c0115e83-5a90-48b3-8276-3deb22e47986)   | Pass el oso  | 4000  | 4 (Rápido) | Es de N-S o E-O | 3 (persigue en cuanto te ve) | Basta una exploción de bomba | Cuando rebota cambia aleatoriamente el sentido de movimiento. Atraviesan paredes débiles y bombas. Aparece cuando aparece el item "fuego" |
 | ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/c8da1438-5808-4efb-9cc5-1532f108a104)   | Pontan la moneda  | 8000  | 4 (Rápido) | Es de N-S o E-O | 3 (persigue desde más lejos) | Basta una exploción de bomba | Cuando rebota cambia aleatoriamente el sentido de movimiento.Atraviesan paredes blandas. Atacan en grupo. Aparece cuando aparece el item "invencible" |
