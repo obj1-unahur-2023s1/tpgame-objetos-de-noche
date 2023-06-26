@@ -17,7 +17,7 @@ class Duro {
 	}
 	
 	method chocarEnemigo(enemigo){
-		enemigo.position(enemigo.recorrido().get(enemigo.recorrido().size()-2))
+		enemigo.chocar()
 	}
 }
 
@@ -50,7 +50,8 @@ class Blando{
 	}
 	
 	method chocarEnemigo(enemigo){
-		if(!enemigo.pasaParedesBlandas())
-			enemigo.position(enemigo.recorrido().get(enemigo.recorrido().size()-2))
+		if(!enemigo.pasaParedesBlandas()){
+			enemigo.chocar()
+		}
 	}
 }

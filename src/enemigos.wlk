@@ -34,7 +34,13 @@ class Enemigo {
 			self.cambiarSentidoAleatoriamente()
 	}
 	
-	method chocarEnemigo(cosa){}
+	method chocar(){
+		self.pararMovimientoAutomatico()
+		self.position(self.recorrido().get(self.recorrido().size()-2))
+		self.cambiarSentidoAleatoriamente()
+		self.moverAutomaticamente()
+	
+	}
 	
 	method chocaConBomberman(){
 		bomberman.morir()
@@ -45,6 +51,10 @@ class Enemigo {
 		game.onTick(self.velocidad(),"movimientoEnemigo_" + id , {
 				self.moverseHacia(direccion)
 		})
+	}
+	
+	method pararMovimientoAutomatico(){
+		game.removeTickEvent("movimientoEnemigo_" + id)
 	}
 	
 	method moverseHacia(unaDireccion) {
