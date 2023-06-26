@@ -1,0 +1,47 @@
+import bloques.*
+import escenario.*
+import wollok.game.*
+import personaje.*
+
+program abc {
+	game.cellSize(32) //era 16
+	//game.boardGround("Playfield.png")
+ 	game.height(13)
+ 	game.width(31)
+	
+/*INICIO DEL JUEGO Y PANTALLAS
+ * Hay 3 pantallas: inicial, escenario, final.
+ * Cada pantalla tiene el metodo inicio() y final()
+ */
+	inicial.inicio()
+	
+	// SALE DE inicial Y VA A escenario ARMANO
+	keyboard.enter().onPressDo({ 
+		inicial.final()
+		escenario.inicio()
+		
+		game.onCollideDo(bomberman,{cosa => bomberman.chocarEnemigo(cosa)})
+	})
+	
+	
+	keyboard.q().onPressDo({
+		game.stop()
+	})
+	
+	keyboard.num2().onPressDo({ // PARA IR A LA PANTALLA DE FINAL (game over)
+		escenario.final()
+		final.inicio()
+	})
+	
+	keyboard.num3().onPressDo({ // PARA IR DE GAME OVER A LA INCIAL
+		final.final()
+		inicial.inicio()
+	})
+	
+
+
+
+
+	game.start()
+	
+}

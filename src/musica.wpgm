@@ -1,0 +1,12 @@
+import wollok.game.*
+
+program soundProgram {
+	
+	const musica = game.sound("Inicio.wav")
+	musica.shouldLoop(true)
+	keyboard.p().onPressDo({musica.pause()})
+	keyboard.r().onPressDo({musica.resume()})
+	keyboard.s().onPressDo({musica.stop()})
+	game.schedule(500, {musica.play()})
+	game.start()
+}
