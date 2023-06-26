@@ -1,12 +1,10 @@
 import personaje.*
 import wollok.game.*
-import bombas.*
+import bombaas.*
 
 class PowerUp {
-	
-
+	method position(){}
 	method image()
-	method position()
 	method caerPowerUp(powerUp) = game.addVisual(powerUp)
 	
 	method activarPowerUp()
@@ -17,7 +15,6 @@ class PowerUp {
 }
 
 object masBombas inherits PowerUp {
-	
 	override method image() = "masBombas.png"
 	override method activarPowerUp() {
 		bomberman.activarMasBombas()
@@ -25,7 +22,6 @@ object masBombas inherits PowerUp {
 }
 
 object controlRemoto inherits PowerUp {
-	
 	override method image() = "controlRemoto.png"
 	override method activarPowerUp() {
 		bomberman.activarRemoto()

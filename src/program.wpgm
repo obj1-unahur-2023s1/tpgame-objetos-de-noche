@@ -2,10 +2,11 @@ import bloques.*
 import escenario.*
 import wollok.game.*
 import personaje.*
+import enemigos.*
 
 program abc {
 	game.cellSize(32) //era 16
-	//game.boardGround("Playfield.png")
+	game.boardGround("Playfield.png")
  	game.height(13)
  	game.width(31)
 	
@@ -21,8 +22,10 @@ program abc {
 		escenario.inicio()
 		
 		game.onCollideDo(bomberman,{cosa => bomberman.chocarEnemigo(cosa)})
+		
 	})
 	
+	keyboard.x().onPressDo({bomberman.ponerBomba()})
 	
 	keyboard.q().onPressDo({
 		game.stop()

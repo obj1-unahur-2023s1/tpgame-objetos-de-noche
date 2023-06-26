@@ -2,18 +2,17 @@
 import wollok.game.*
 import posiciones.*
 import personaje.*
-//import bloques .* NO SE DEBERIA UTILIZAR SOLO LLAMAR A ESCENARIO
 import escenario.*
+import bloques.*
 
 class Bomba { // Al llamar a la clase con bomberman la bomba hace animacion de explotar y llama al fuego
 	var property image = "bomba_0.png"
 	var property position = bomberman.recorrido().last()
+	var property sound = "boom.wav"
 	//var property alcance = 1
 	
-
-	//const property posicionesADesaparecer = []
 	const imagenes = ["bomba_0.png","bomba_1.png","bomba_2.png"]
-	//const property posicionesConFuego =[]
+
 	method animacion(){ // Animacion itera sobre la lista de imagenes y cambia el visual cada X tiempo, y borra el tick
 		var i = 0
 		game.onTick(300,"explosion",{self.image(imagenes.get(i%3))i++})
@@ -32,11 +31,11 @@ class Bomba { // Al llamar a la clase con bomberman la bomba hace animacion de e
 	}	
 	
 	
-	method explotar(){
-		
+	method explotar(){	
 		self.animacion() // inicia la bomba
 		self.eliminar(3000,"explosion") //  elimina la bomba
 		self.agregarFuego()// agrega fuego 
+		//game.sound(sound)
 	}
 
 
@@ -84,17 +83,17 @@ class Fuego  {
 	method expandirFuego() 	
 	
 	method eliminarBloqueEnPosicionSiHay(posicion){
-		if(!escenario.hayBloquesDurosEn(posicion) && escenario.hayBloquesBlandosEn(posicion)){ //valida si hay un bloque
-			//self.position(posicion)//no deberia hacerlo aca
-			escenario.devolverMuroBlando(posicion).explotar() //devuelve el objecto y lo explota
+		if(escenario.hayBloquesBlandosEn(posicion)){ 
+			game.removeVisual(self)
+			escenario.devolverMuroBlando(posicion).explotar()
 		}else if(escenario.hayBloquesDurosEn(posicion)){
 			game.removeVisual(self)
-		}//Deberia Funcionar
+		}
 	}
 	
 	method eliminarEnemigoEnPosicionSiHay(posicion){
 		 if(escenario.hayEnemigosEnPosicion(posicion)){
-			//self.position(posicion)
+			game.removeVisual(self)
 			escenario.devolverEnemigo(posicion).morir()
 		}//Deberia funcionar
 	}
@@ -128,14 +127,14 @@ class ExpDerecha inherits Fuego{
 		self.position(self.position().right(1))
 		a-- }// mueve a la derecha no mas de una vez
 		
-		self.eliminarBloqueEnPosicionSiHay(position)//deberia haberse movido el cabezalanteriormente //mueve cuando encuentra objecto tira error de posicion , mientras funciona normal
-		self.eliminarEnemigoEnPosicionSiHay(position)
+		self.eliminarBloqueEnPosicionSiHay(self.position())//deberia haberse movido el cabezalanteriormente //mueve cuando encuentra objecto tira error de posicion , mientras funciona normal
+		self.eliminarEnemigoEnPosicionSiHay(self.position())
 		//blando.devolverMuroBlando(self.position()).explotar()// prueba a la fuerza lo que deberia hacer el escenario
 		//blando.devolverEnemigo(self.position()).morir()
 		game.onTick(150,"derec",{ //empieza la animacion
 			self.image(imagen.get(i%8))i++
 		})
-		self.eliminar(1200,"derec")//a++// corta animacion
+		self.eliminarSiNoHayDuro(self.position(),1200,"derec")//a++// corta animacion
 	}	
 }	
 
@@ -150,13 +149,13 @@ class ExpIzq inherits Fuego {
 		self.position(self.position().left(1))
 		a-- }; // mueve a la derecha
 		
-		self.eliminarBloqueEnPosicionSiHay(position)//deberia haberse movido el cabezalanteriormente //mueve cuando encuentra objecto tira error de posicion , mientras funciona normal
-		self.eliminarEnemigoEnPosicionSiHay(position)
+		self.eliminarBloqueEnPosicionSiHay(self.position())//deberia haberse movido el cabezalanteriormente //mueve cuando encuentra objecto tira error de posicion , mientras funciona normal
+		self.eliminarEnemigoEnPosicionSiHay(self.position())
 		
 		game.onTick(150,"izqui",{ //empieza la animacion
 			self.image(imagen.get(i%8))i++
 		})
-		self.eliminar(1200,"izqui") // corta animacion
+		self.eliminarSiNoHayDuro(self.position(),1200,"izqui") // corta animacion
 	}	
 }
 
@@ -171,13 +170,13 @@ class ExpArriba inherits Fuego {
 		self.position(self.position().up(1))
 		a-- }; // mueve a la derecha
 		
-		self.eliminarBloqueEnPosicionSiHay(position)//deberia haberse movido el cabezalanteriormente //mueve cuando encuentra objecto tira error de posicion , mientras funciona normal
-		self.eliminarEnemigoEnPosicionSiHay(position)
+		self.eliminarBloqueEnPosicionSiHay(self.position())//deberia haberse movido el cabezalanteriormente //mueve cuando encuentra objecto tira error de posicion , mientras funciona normal
+		self.eliminarEnemigoEnPosicionSiHay(self.position())
 		
 		game.onTick(150,"arrib",{ //empieza la animacion
 			self.image(imagen.get(i%8))i++
 		})
-		self.eliminar(1200,"arrib") // corta animacion
+		self.eliminarSiNoHayDuro(self.position(),1200,"arrib") // corta animacion
 	}
 	
 	
@@ -194,13 +193,13 @@ class ExpAbajo inherits Fuego {
 		self.position(self.position().down(1))
 		a-- }; // mueve a la derecha
 		
-		self.eliminarBloqueEnPosicionSiHay(position)//deberia haberse movido el cabezalanteriormente //mueve cuando encuentra objecto tira error de posicion , mientras funciona normal
-		self.eliminarEnemigoEnPosicionSiHay(position)
+		self.eliminarBloqueEnPosicionSiHay(self.position())//deberia haberse movido el cabezalanteriormente //mueve cuando encuentra objecto tira error de posicion , mientras funciona normal
+		self.eliminarEnemigoEnPosicionSiHay(self.position())
 		
 		game.onTick(150,"abajo",{ //empieza la animacion
 			self.image(imagen.get(i%8))i++
 		})
-		self.eliminar(1200,"abajo") // corta animacion
+		self.eliminarSiNoHayDuro(self.position(),1200,"abajo") // corta animacion
 	}	
 }
 

@@ -1,10 +1,10 @@
 import wollok.game.*
-import bombaa.*
+import bombaas.*
 import enemigos.*
 import escenario.*
 
 object bomberman {
-	const property recorrido=[game.at(1,1)]
+	const property recorrido=[game.at(1,1),game.at(2,1)] // game.at 2,1 esta pasado para hacer pruebas
 	
 	var bomba7
 	
@@ -78,9 +78,6 @@ object bomberman {
 		haciaDerecha++
 	}
 	
-
-	
-	
 	method chocarEnemigo(cosa){
 		cosa.chocaConBomberman()
 		if(vidas>0){
@@ -115,7 +112,8 @@ object bomberman {
 		game.addVisual(bomba7)
 		bombasPlantadas.add(bomba7.position())
 		bombasDisponibles --
-		game.schedule(2000,{bomba7.explotar()})} 
+		//game.schedule(2000,{bomba7.explotar()})} No hace falta schedule
+		bomba7.explotar()}
 		bombasDisponibles ++
 	}
  	method desaparece (){

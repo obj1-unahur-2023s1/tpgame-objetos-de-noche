@@ -1,4 +1,4 @@
-import direcciones.*
+import posiciones.*
 import wollok.game.*
 import escenario.*
 import aleatorio.*
@@ -10,25 +10,26 @@ import animaciones.*
 class Enemigo {
 	var property image = self.nombre() + "_derec_0.png"
 	var property position = aleatorio.position()
-	const posiciones = []
+	const recorrido = []
 	const id
 	var direccion
 	method nombre()
 	method puntaje()
 	method velocidad()
-	method pasaParedesBlandas()
+	method pasaParedesBlandas() = false
+	method pasaBombas() = false
 	
 	method id() = id
 	
 	method direccion() = direccion
 	
-	method posiciones() = posiciones
+	method recorrido() = recorrido
 	
 	method cambiarSentidoAleatoriamente(){
 		const aux = direccion
-		const newDir =  direcciones.anyOne()
+		const newDir =  posiciones.anyOne()
 		if(aux != newDir)
-			direccion = direcciones.anyOne()
+			direccion = posiciones.anyOne()
 		else
 			self.cambiarSentidoAleatoriamente()
 	}
@@ -40,25 +41,19 @@ class Enemigo {
 	}
 	
 	method moverAutomaticamente(){
-		posiciones.add(position)
+		recorrido.add(position)
 		game.onTick(self.velocidad(),"movimientoEnemigo_" + id , {
 				self.moverseHacia(direccion)
 		})
 	}
 	
 	method moverseHacia(unaDireccion) {
-		if(unaDireccion.sePuedeMover(self)){
-			position = unaDireccion.nuevaUbicacion(position)
-			if(unaDireccion.id() == derecha.id())
-				self.seMueveHaciaDer()
-			else
-				self.seMueveHaciaIzq()
-			posiciones.add(position)
-		}
-		else{
-			self.cambiarSentidoAleatoriamente()
-			self.moverseHacia(direccion)
-		}
+		position = unaDireccion.mover(position)
+		recorrido.add(position)
+		if(unaDireccion.id() == este.id())
+			self.seMueveHaciaDer()
+		else
+			self.seMueveHaciaIzq()
 	}
 	
 	method chocarCosa(cosa){
@@ -99,8 +94,6 @@ class Globo inherits Enemigo{
 	
 	override method puntaje() = 100
 
-	override method velocidad() = 1000
-	
-	override method pasaParedesBlandas() = false
+	override method velocidad() = 500
 	
 }
