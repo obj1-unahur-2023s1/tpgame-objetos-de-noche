@@ -36,7 +36,7 @@ class Enemigo {
 	
 	method chocar(){
 		self.pararMovimientoAutomatico()
-		self.position(self.recorrido().get(self.recorrido().size()-2))
+		self.position(recorrido.get(recorrido.size()-2))
 		self.cambiarSentidoAleatoriamente()
 		self.moverAutomaticamente()
 	
