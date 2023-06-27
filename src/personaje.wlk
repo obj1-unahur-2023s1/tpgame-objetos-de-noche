@@ -89,10 +89,11 @@ object bomberman {
 	
    method morir(){
    		estaVivo = false
+	 	self.sacarBombas()
 	    self.desaparece()
 	   	if (vidas > 1 ){
 	   		game.schedule(1200,{self.position( self.recorrido().first()); game.removeTickEvent("bombermanMuere");image ="player_derec_0.png" ; direccion=true; 
-	   		vidas -= 1; estaVivo = true})
+	   		vidas -= 1; estaVivo = true;})
 	   } 
 	   else {
 	   	game.schedule(1200, {
@@ -102,12 +103,18 @@ object bomberman {
 	   }
    
    }
+   
+   method sacarBombas(){
+   		bombasPlantadas.forEach({b => b.sacarBomba()})
+   }
 	
 	method ponerBomba(){
-		 unaBomba = new Bomba()
 		if (recorrido.size() > 1 && bombasDisponibles > 0){
+			const posActu = position
+			position = recorrido.get(recorrido.size() - 2)
+		 	unaBomba = new Bomba(position = posActu)
 			game.addVisual(unaBomba)
-			bombasPlantadas.add(unaBomba.position())
+			bombasPlantadas.add(unaBomba)
 			bombasDisponibles --
 			unaBomba.explotar()
 		}

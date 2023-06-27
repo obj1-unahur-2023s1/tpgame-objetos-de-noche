@@ -11,10 +11,15 @@ class Bomba { // Al llamar a la clase con bomberman la bomba hace animacion de e
 	var property image = "bomba_0.png"
 	const property position = bomberman.recorrido().last()
 	var property sound = "boom.wav"
+	const fuego = []
 	//var property alcance = 1
 	
 	const imagenes = ["bomba_0.png","bomba_1.png","bomba_2.png"]
 
+	method agregarFuego(unFuego){
+		fuego.add(unFuego)
+	}
+	
 	method animacionBomba(){ // Animacion itera sobre la lista de imagenes y cambia el visual cada X tiempo, y borra el tick
 		var i = 0
 		game.onTick(300,"explosion",{self.image(imagenes.get(i%3))i++})
@@ -43,11 +48,11 @@ class Bomba { // Al llamar a la clase con bomberman la bomba hace animacion de e
 
 
 	method agregarFuego(){
-		const expCentral = new ExpCentral(image="exp_0_centr.png")
-		const expDerecha = new ExpDerecha(image="exp_0_derec_2.png")
-		const expIzq = new ExpIzq(image="exp_0_izqui_2.png")
-		const expArriba = new ExpArriba(image="exp_0_arrib_2.png")
-		const expAbajo = new ExpAbajo(image="exp_0_abajo_2.png")
+		const expCentral = new ExpCentral(image="exp_0_centr.png", position=position, bomba=self)
+		const expDerecha = new ExpDerecha(image="exp_0_derec_2.png", position=position, bomba=self)
+		const expIzq = new ExpIzq(image="exp_0_izqui_2.png", position=position, bomba=self)
+		const expArriba = new ExpArriba(image="exp_0_arrib_2.png", position=position, bomba=self)
+		const expAbajo = new ExpAbajo(image="exp_0_abajo_2.png", position=position, bomba=self)
 		
 		game.schedule(3000,{
 			game.addVisual(expCentral);//funciona muestra fuego central y desaparece
@@ -69,24 +74,41 @@ class Bomba { // Al llamar a la clase con bomberman la bomba hace animacion de e
 			enemigo.chocar()
 		}
 	}
+	
+	method sacarBomba(){
+		if(!fuego.isEmpty()){
+			fuego.forEach({f => if (game.hasVisual(f)) game.removeVisual(f)})
+		}
+		if(game.hasVisual(self))
+			game.removeVisual(self)
+	}
+	
+	method sacarFuego(unFuego){
+		if(fuego.contains(unFuego)){
+			fuego.remove(unFuego)
+		}
+	}
 		
 }
 
 class Fuego  {
 	var property image
-	var property position =  bomberman.bombasPlantadas().last()
+	var property position
+	var bomba 
 	
 	method eliminar(tiempo,tick){
 		game.schedule(tiempo,{
 			game.removeTickEvent(tick);
-			if(game.hasVisual(self))
+			if(game.hasVisual(self)){
 				game.removeVisual(self)
+				bomba.sacarFuego(self)
+			}
 		})
 	}
 	
 	method eliminarSiNoHayDuro(posicion,tiempo,tick){
 		if(!escenario.hayBloquesDurosEn(posicion)){
-		self.eliminar(tiempo,tick)
+			self.eliminar(tiempo,tick)
 		}
 	}
 	method expandirFuego(direccion, imagenes, posicionSiguiente) {
@@ -97,6 +119,7 @@ class Fuego  {
 			if(a > 0 ){
 				self.position(posicionSiguiente)
 				a-- 
+				bomba.agregarFuego(self)
 			}
 			game.onTick(300,direccion,{
 				self.image(imagenes.get(i%4))i++
@@ -147,6 +170,7 @@ class ExpCentral inherits Fuego{
 	
 	override method expandirFuego(direccion, unasImagenes, posicionSiguiente) {
 		var i = 0
+		bomba.agregarFuego(self)
 		game.onTick(300,direccion,{
 			self.image(imagenes.get(i%4))i++
 		})

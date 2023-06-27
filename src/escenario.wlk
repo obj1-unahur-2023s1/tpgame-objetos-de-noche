@@ -99,7 +99,7 @@ object escenario{
 	}
 	
 	method removerBombas(){
-		bomberman.bombasPlantadas().forEach({b => b.clear()})
+		bomberman.bombasPlantadas().forEach({b => b.position().clear()})
 	}
 	
 	method final(){

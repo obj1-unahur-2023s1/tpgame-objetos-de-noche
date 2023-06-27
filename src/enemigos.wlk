@@ -96,7 +96,7 @@ class Enemigo {
 		self.pararMovimientoAutomatico()
 		const nombreTick ="muere_enemigo_" + self.nombre() + "_" + id
 		const nombreEnemigo = self.nombre()
-		const nombreArchivo = nombreEnemigo + "muere"
+		const nombreArchivo = nombreEnemigo + "_muere_"
 		const velocidadFinal = 300 * 5
 		animacion.animacion(nombreTick, 300, nombreArchivo, velocidadFinal, self)
 		game.schedule(velocidadFinal, {image = '100pt.png'})
