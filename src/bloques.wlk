@@ -6,6 +6,7 @@ import animaciones.*
 import enemigos.*
 import bombaas.*
 import fuegos.*
+import escenario.*
 
 class Duro {
 	var property position
@@ -28,6 +29,7 @@ class Blando{
 	var property position = aleatorio.position()
 	var property image = "muro_blando.png"
 	const property powerUp = false
+	const property tienePuerta = false
 	
 	method collision() = true
 	
@@ -35,6 +37,7 @@ class Blando{
 		const animacionNombre = "bloque_explosion_" + id
 		animacion.animacion(animacionNombre, 200, "explosion_muro_suave_", 1200,self)
 		self.dejarPower()
+		self.dejarPuerta()
 		self.eliminar(1200,animacionNombre)
 	}
 	
@@ -56,4 +59,27 @@ class Blando{
 			enemigo.chocar()
 		}
 	}
+	
+	method dejarPuerta(){
+		if (tienePuerta) {game.addVisualIn(puerta,position)}
+	}
+}
+
+object puerta {
+	var property position
+	const property image = "puerta.png"
+	
+	method habilitado(){
+		return (escenario.enemigosGlobos().isEmpty())
+	}
+	
+	method chocaConBomberman(){
+		if (self.habilitado()) {
+			escenario.final()
+			final.inicio()}
+	}
+	
+	method chocarEnemigo(enemigo){}
+	method explotar(){}
+	
 }

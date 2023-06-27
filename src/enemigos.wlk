@@ -96,11 +96,17 @@ class Enemigo {
 		self.pararMovimientoAutomatico()
 		const nombreTick ="muere_enemigo_" + self.nombre() + "_" + id
 		const nombreEnemigo = self.nombre()
-		const nombreArchivo = nombreEnemigo + "_muere_"
+		const nombreArchivo = nombreEnemigo + "muere"
 		const velocidadFinal = 300 * 5
 		animacion.animacion(nombreTick, 300, nombreArchivo, velocidadFinal, self)
 		game.schedule(velocidadFinal, {image = '100pt.png'})
-		game.schedule(velocidadFinal + 300,{ game.removeVisual(self)})
+		game.schedule(velocidadFinal + 300,{ game.removeVisual(self); self.sacarDeLaLista()})
+	}
+	
+	method sacarDeLaLista(){
+		if (escenario.enemigosGlobos().contains(self)){
+			escenario.enemigosGlobos().remove(self)
+		}
 	}
 }
 

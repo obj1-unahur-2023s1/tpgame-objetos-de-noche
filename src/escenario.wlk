@@ -72,12 +72,10 @@ object escenario{
 	}
 	
 	method ponerBlandos(){
-		/* 
-		 * CON ESTO CREO EL BLOQUE CON POWERUP ALEATORIO CON POSICION ALEATORIA
-		game.addVisual(new Blando(powerUp= true)) <<< VER!!!
-		bloques-1.times({i=>game.addVisual(new Blando())})
-		*/
-		bloquesCantidad.times({i=> game.addVisual(new Blando(id = i))})
+		
+		//(bloquesCantidad-2).times({i=> game.addVisual(new Blando(id = i))})
+		game.addVisual(new Blando(powerUp= true,id = bloquesCantidad))
+		game.addVisual(new Blando(tienePuerta= true, id = bloquesCantidad-1))
 	}
 	
 	method ponerEnemigosGlobos(){
