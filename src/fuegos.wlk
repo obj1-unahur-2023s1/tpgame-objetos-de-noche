@@ -1,5 +1,7 @@
 import wollok.game.*
 import personaje.*
+import enemigos.*
+import bloques.*
 
 object expDerecha {
 		const imagen = ["exp_0_derec_1.png","exp_1_derec_1.png","exp_2_derec_1.png","exp_3_derec_1.png","exp_0_derec_2.png","exp_1_derec_2.png","exp_2_derec_2.png","exp_3_derec_2.png"]
@@ -22,6 +24,13 @@ object expDerecha {
 		})
 		
 	}	
+	
+	
+	
+	method chocarEnemigo(enemigo){
+		enemigo.morir()
+	}
+	
 }
 
 object expIzq {
@@ -36,6 +45,10 @@ object expIzq {
 			self.image(imagen.get(i%8))i++
 		})
 		self.eliminar(1200,"izqui") // corta animacion
+	}
+	
+	method chocarEnemigo(enemigo){
+		enemigo.morir()
 	}
 	
 	method eliminar(tiempo,tick){
@@ -68,6 +81,13 @@ object expArriba {
 		})
 		
 	}	
+	
+	
+	
+	method chocarEnemigo(enemigo){
+		enemigo.morir()
+	}
+	
 }
 
 object expAbajo {
@@ -90,4 +110,11 @@ object expAbajo {
 			game.removeVisual(self)
 		})
 	}	
+	
+	
+	
+	method chocarEnemigo(enemigo){
+		enemigo.morir()
+	}
+	
 }

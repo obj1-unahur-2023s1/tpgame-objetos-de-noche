@@ -4,6 +4,7 @@ import powerUps.*
 import personaje.*
 import animaciones.*
 import enemigos.*
+import bombaas.*
 
 
 class Duro {

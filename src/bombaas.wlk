@@ -4,6 +4,7 @@ import posiciones.*
 import personaje.*
 import escenario.*
 import bloques.*
+import enemigos.*
 
 class Bomba { // Al llamar a la clase con bomberman la bomba hace animacion de explotar y llama al fuego
 	var property image = "bomba_0.png"
@@ -60,6 +61,12 @@ class Bomba { // Al llamar a la clase con bomberman la bomba hace animacion de e
  			expAbajo.expandirFuego()
 		})
 
+	}
+	
+	method chocarEnemigo(enemigo){
+		if(!enemigo.pasaBombas()){
+			enemigo.chocar()
+		}
 	}
 		
 }
