@@ -73,7 +73,7 @@ object escenario{
 	
 	method ponerBlandos(){
 		
-		//(bloquesCantidad-2).times({i=> game.addVisual(new Blando(id = i))})
+		(bloquesCantidad-2).times({i=> game.addVisual(new Blando(id = i))})
 		game.addVisual(new Blando(powerUp= true,id = bloquesCantidad))
 		game.addVisual(new Blando(tienePuerta= true, id = bloquesCantidad-1))
 	}
