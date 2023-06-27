@@ -40,10 +40,6 @@ program abc {
 		final.final()
 		inicial.inicio()
 	})
-	
-
-
-
 
 	game.start()
 	

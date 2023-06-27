@@ -11,7 +11,7 @@ object inicial{
 	
 	method musicaON(){game.schedule(500, {musica.play()} )}
 	//method musicaON(){musica.play()}
-	method musicaOFF(){musica.pause()}
+	method musicaOFF(){ if(!musica.paused()) musica.pause() }
 	
 	method inicio(){
 		game.addVisual(self)
@@ -48,8 +48,8 @@ object escenario{
 		musica.play()
 	}
 	method musicaOFF(){
-		//musica.shouldLoop(false)
-		musica.pause()
+		if(!musica.paused())
+			musica.pause()
 	}
 	
 	method inicio(){
@@ -58,9 +58,14 @@ object escenario{
 		self.ponerDuros()
 		self.ponerBlandos()
 		self.ponerEnemigosGlobos()
+		self.ponerVidas()
 		self.musicaON()
 		//return (game.boardGround("Playfield.png"))
 		bomberman.iniciar()
+	}
+	
+	method ponerVidas(){
+		game.addVisual(vida)
 	}
 	
 	method ponerDuros(){
@@ -74,7 +79,7 @@ object escenario{
 		game.addVisual(new Blando(powerUp= true)) <<< VER!!!
 		bloques-1.times({i=>game.addVisual(new Blando())})
 		*/
-		bloquesCantidad.times({i=>game.addVisual(new Blando())})
+		bloquesCantidad.times({i=>game.addVisual(new Blando(id = i))})
 	}
 	
 	method ponerEnemigosGlobos(){
@@ -97,17 +102,24 @@ object escenario{
 		aleatorio.posiciones().forEach({p=>p.clear()})
 	}
 	
+	method removerBombas(){
+		bomberman.bombasPlantadas().forEach({b => b.clear()})
+	}
+	
 	method final(){
 		self.musicaOFF()
 		self.removerBlandos()
 		self.removerDuros()
 		self.removerEmemigos()
+		self.removerBombas()
 		//game.clear()
 		//game.addVisual(final) //ponemos la imagen gameover
 		game.removeVisual(bomberman)
 	}
 	
 	method hayBloquesDurosEn(posicion) = ubicacionesBloquesDuros.any({u => u == posicion})
+	
+	method hayAlgoEnPosicion(posicion) = game.getObjectsIn(posicion).size() > 0
 	
 	method hayBloquesBlandosEn(posicion) = aleatorio.posiciones().any({u => u == posicion})
 	
@@ -146,4 +158,12 @@ object final{
 		//musica.shouldLoop(false)
 		musica.pause()
 	}
+}
+
+
+
+object vida{
+	method position() = game.at(0,12)
+	
+	method image() = "1_vida.png"
 }

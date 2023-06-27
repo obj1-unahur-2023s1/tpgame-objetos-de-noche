@@ -24,16 +24,18 @@ class Duro {
 
 
 class Blando{
+	const id
 	var property position = aleatorio.position()
 	var property image = "muro_blando.png"
 	const property powerUp = false
-
+	
 	method collision() = true
 	
 	method explotar(){
-		animacion.animacion("bloque",150,"explosion_muro_suave_",900,self)
+		const animacionNombre = "bloque_explosion_" + id
+		animacion.animacion(animacionNombre, 200, "explosion_muro_suave_", 1200,self)
 		self.dejarPower()
-		self.eliminar(900,"cambio")
+		self.eliminar(1200,animacionNombre)
 	}
 	
 	method chocaConBomberman(){
@@ -45,7 +47,6 @@ class Blando{
 	}
 	method eliminar(tiempo,tick){ 
 		game.schedule(tiempo,{
-			game.removeTickEvent(tick);
 			game.removeVisual(self)
 		})
 	}

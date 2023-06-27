@@ -6,7 +6,7 @@ import escenario.*
 object bomberman {
 	const property recorrido=[game.at(1,1),game.at(2,1)] // game.at 2,1 esta pasado para hacer pruebas
 	
-	var bomba7
+	var unaBomba
 	
 	var property e =1
 	var haciaDerecha =0
@@ -90,8 +90,8 @@ object bomberman {
    	
    	vidas -= 1
     self.desaparece()
-   if (vidas >0 ){
-   game.schedule(1200,{self.position( self.recorrido().first()); game.removeTickEvent("bombermanMuere");image ="player_derec_0.png" ; direccion=true })
+   if (vidas > 0 ){
+   	game.schedule(1200,{self.position( self.recorrido().first()); game.removeTickEvent("bombermanMuere");image ="player_derec_0.png" ; direccion=true })
    
    } else {
    	
@@ -102,18 +102,17 @@ object bomberman {
    }
 	
 	method ponerBomba(){
-		 bomba7= new Bomba()
+		 unaBomba = new Bomba()
 				
 		
 		//if (!remotoActivo){
 		//	game.onTick(4000, "explota bomba", { self.explotaBombas() })
 		//}
 		if (recorrido.size() > 1 && bombasDisponibles > 0){
-		game.addVisual(bomba7)
-		bombasPlantadas.add(bomba7.position())
+		game.addVisual(unaBomba)
+		bombasPlantadas.add(unaBomba.position())
 		bombasDisponibles --
-		//game.schedule(2000,{bomba7.explotar()})} No hace falta schedule
-		bomba7.explotar()}
+		unaBomba.explotar()}
 		bombasDisponibles ++
 	}
  	method desaparece (){
