@@ -25,6 +25,12 @@ program abc {
 		
 	})
 	
+	
+		
+	keyboard.up().onPressDo{bomberman.arriba()}
+	keyboard.down().onPressDo{bomberman.abajo()}
+	keyboard.right().onPressDo{bomberman.derecha() }
+	keyboard.left().onPressDo{bomberman.izquierda() }
 	keyboard.x().onPressDo({bomberman.ponerBomba()})
 	
 	keyboard.q().onPressDo({

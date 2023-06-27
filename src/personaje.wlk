@@ -22,25 +22,20 @@ object bomberman {
 	var vidas= 3
 	
 	 
-	var property bombasDisponibles = 1
+	var bombasDisponibles = 1
 	var property pasarBomba = false
-	method iniciar(){
-		
-		game.width(31)
-		game.height(13)
-		game.cellSize(32)
-		keyboard.up().onPressDo{self.arriba()}
-		keyboard.down().onPressDo{self.abajo()}
-		keyboard.right().onPressDo{self.derecha() }
-		keyboard.left().onPressDo{self.izquierda() }
-		keyboard.p().onPressDo{self.ponerBomba()}
-		
-		game.addVisual(self)
-		
-		}
-		
 	method vidas()= vidas
 		
+	method agregarBombaDisponible(){
+		bombasDisponibles ++
+	}
+	
+	method sacarBombaPlantada(posicion){
+		if(bombasPlantadas.contains(posicion)){
+			bombasPlantadas.remove(posicion)
+		}
+	}
+	
 	method position() = position
 	
 	method position(posicion){
@@ -103,22 +98,16 @@ object bomberman {
 	
 	method ponerBomba(){
 		 unaBomba = new Bomba()
-				
-		
-		//if (!remotoActivo){
-		//	game.onTick(4000, "explota bomba", { self.explotaBombas() })
-		//}
 		if (recorrido.size() > 1 && bombasDisponibles > 0){
-		game.addVisual(unaBomba)
-		bombasPlantadas.add(unaBomba.position())
-		bombasDisponibles --
-		unaBomba.explotar()}
-		bombasDisponibles ++
+			game.addVisual(unaBomba)
+			bombasPlantadas.add(unaBomba.position())
+			bombasDisponibles --
+			unaBomba.explotar()
+		}
 	}
  	method desaparece (){
  		const imagen = ["player_muere_0.png" ,"player_muere_1.png" , "player_muere_2.png","player_muere_3.png","player_muere_4.png","player_muere_5.png","player_muere_6.png","player_muere_7.png" ]
  		var i = 0
-		//game.onTick(500,"cambioColor", {}})
 		direccion = false
 		game.onTick(150,"bombermanMuere",{self.image(imagen.get(i%8)) ; i++})
 		

@@ -9,7 +9,7 @@ import animaciones.*
 
 class Bomba { // Al llamar a la clase con bomberman la bomba hace animacion de explotar y llama al fuego
 	var property image = "bomba_0.png"
-	var property position = bomberman.recorrido().last()
+	const property position = bomberman.recorrido().last()
 	var property sound = "boom.wav"
 	//var property alcance = 1
 	
@@ -23,7 +23,8 @@ class Bomba { // Al llamar a la clase con bomberman la bomba hace animacion de e
 	method eliminar(tiempo,tick){
 		game.schedule(tiempo,{
 			game.removeTickEvent(tick);
-			game.removeVisual(self)
+			if(game.hasVisual(self))
+				game.removeVisual(self)
 		})
 	
 	}
@@ -38,7 +39,6 @@ class Bomba { // Al llamar a la clase con bomberman la bomba hace animacion de e
 		self.animacionBomba() // inicia la bomba
 		self.eliminar(3000,"explosion") //  elimina la bomba
 		self.agregarFuego()// agrega fuego 
-		//game.sound(sound)
 	}
 
 
@@ -61,7 +61,7 @@ class Bomba { // Al llamar a la clase con bomberman la bomba hace animacion de e
  			game.addVisual(expAbajo) // Fuego Abajo Obj
  			expAbajo.expandirFuego("abajo", expAbajo.imagenesExplosion(), self.position().down(1))
 		})
-
+		game.schedule(4200, {bomberman.agregarBombaDisponible(); bomberman.sacarBombaPlantada(position)})
 	}
 	
 	method chocarEnemigo(enemigo){
@@ -79,7 +79,8 @@ class Fuego  {
 	method eliminar(tiempo,tick){
 		game.schedule(tiempo,{
 			game.removeTickEvent(tick);
-			game.removeVisual(self)
+			if(game.hasVisual(self))
+				game.removeVisual(self)
 		})
 	}
 	
