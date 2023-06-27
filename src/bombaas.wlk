@@ -121,6 +121,12 @@ class ExpCentral inherits Fuego{//(image="exp_0_centr.png"){
 			})
 			self.eliminar(1200,"a")}
 			
+	
+	
+	
+	method chocarEnemigo(enemigo){
+		enemigo.morir()
+	}
 }
 
 
@@ -142,7 +148,15 @@ class ExpDerecha inherits Fuego{
 			self.image(imagen.get(i%8))i++
 		})
 		self.eliminarSiNoHayDuro(self.position(),1200,"derec")//a++// corta animacion
+		
 	}	
+	
+	
+	
+	
+	method chocarEnemigo(enemigo){
+		enemigo.morir()
+	}
 }	
 
 
@@ -164,6 +178,13 @@ class ExpIzq inherits Fuego {
 		})
 		self.eliminarSiNoHayDuro(self.position(),1200,"izqui") // corta animacion
 	}	
+	
+	
+	
+	
+	method chocarEnemigo(enemigo){
+		enemigo.morir()
+	}
 }
 
 class ExpArriba inherits Fuego {
@@ -187,6 +208,12 @@ class ExpArriba inherits Fuego {
 	}
 	
 	
+	
+	
+	method chocarEnemigo(enemigo){
+		enemigo.morir()
+	}
+	
 }
 
 class ExpAbajo inherits Fuego {
@@ -208,5 +235,12 @@ class ExpAbajo inherits Fuego {
 		})
 		self.eliminarSiNoHayDuro(self.position(),1200,"abajo") // corta animacion
 	}	
+	
+	
+	
+	
+	method chocarEnemigo(enemigo){
+		enemigo.morir()
+	}
 }
 

@@ -6,7 +6,7 @@ import bloques.*
 import personaje.*
 import animaciones.*
 import bombaas.*
-
+import fuegos.*
 
 class Enemigo {
 	var property image = self.nombre() + "_derec_0.png"
@@ -37,7 +37,8 @@ class Enemigo {
 	
 	method chocar(){
 		self.pararMovimientoAutomatico()
-		self.position(recorrido.get(recorrido.size()-2))
+		const newPos = recorrido.get(recorrido.size()-2)
+		self.position(newPos)
 		self.cambiarSentidoAleatoriamente()
 		self.moverAutomaticamente()
 	}

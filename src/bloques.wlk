@@ -5,7 +5,7 @@ import personaje.*
 import animaciones.*
 import enemigos.*
 import bombaas.*
-
+import fuegos.*
 
 class Duro {
 	var property position

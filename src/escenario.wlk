@@ -115,7 +115,7 @@ object escenario{
 	
 	method hayEnemigosEnPosicion(posicion) = enemigosGlobos.any({e => e.position() == posicion}) // Nuevo pregunta si hay enemigo
 	
-	method devolverEnemigo(posicion) = enemigosGlobos.getObjectsIn(posicion) //.find({e => e.position() == posicion})//busca el objecto en la lista primero pregunte asi no falla          //getObjectIn(posicion) // nuevo devuelve enemigo
+	method devolverEnemigo(posicion) = game.getObjectsIn(posicion) //.find({e => e.position() == posicion})//busca el objecto en la lista primero pregunte asi no falla          //getObjectIn(posicion) // nuevo devuelve enemigo
 }
 
 
