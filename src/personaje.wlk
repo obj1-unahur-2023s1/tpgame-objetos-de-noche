@@ -21,6 +21,8 @@ object bomberman {
 	var direccion = true
 	var vidas= 3
 	
+	var property estaVivo = true
+	
 	 
 	var bombasDisponibles = 1
 	var property pasarBomba = false
@@ -39,60 +41,65 @@ object bomberman {
 	method position() = position
 	
 	method position(posicion){
-		
 		position = posicion
 		recorrido.add(position)
 	}
 	
 	method arriba(){ if (position.y()< game.height()-2  && direccion)
-		self.position(position.up(1))
-		const imagen = ["player_arrib_0.png" ,"player_arrib_1.png" , "player_arrib_2.png" ]
-		
-		self.image(imagen.get(haciaArriba%3))
-		 haciaArriba++
+		if(estaVivo){
+			self.position(position.up(1))
+			const imagen = ["player_arrib_0.png" ,"player_arrib_1.png" , "player_arrib_2.png" ]
+			
+			self.image(imagen.get(haciaArriba%3))
+			 haciaArriba++
+		}
 	}
 	
 	method abajo(){ if (position.y()>1 && direccion)
-		self.position(position.down(1))
-		const imagen = ["player_abajo_0.png" ,"player_abajo_1.png" , "player_abajo_2.png" ]
-		self.image(imagen.get(haciaAbajo%3))
-		haciaAbajo++
+		if(estaVivo){
+			self.position(position.down(1))
+			const imagen = ["player_abajo_0.png" ,"player_abajo_1.png" , "player_abajo_2.png" ]
+			self.image(imagen.get(haciaAbajo%3))
+			haciaAbajo++
+		}
 	}
 	
 	method izquierda(){ if (position.x()>1  && direccion)
-		self.position(position.left(1))
-		const imagen = ["player_izqui_0.png" ,"player_izqui_1.png" , "player_izqui_2.png" ]
-		self.image(imagen.get(haciaIzquierda%3))
-		haciaIzquierda++
+		if(estaVivo){
+			self.position(position.left(1))
+			const imagen = ["player_izqui_0.png" ,"player_izqui_1.png" , "player_izqui_2.png" ]
+			self.image(imagen.get(haciaIzquierda%3))
+			haciaIzquierda++
+		}
 	}
 	
 	method derecha(){ if (position.x()< game.width()-2  && direccion)
-		self.position(position.right(1))
-		const imagen = ["player_derec_0.png" ,"player_derec_1.png" , "player_derec_2.png" ]
-		self.image(imagen.get(haciaDerecha%3))
-		haciaDerecha++
+		if(estaVivo){
+			self.position(position.right(1))
+			const imagen = ["player_derec_0.png" ,"player_derec_1.png" , "player_derec_2.png" ]
+			self.image(imagen.get(haciaDerecha%3))
+			haciaDerecha++
+		}
 	}
 	
 	method chocarEnemigo(cosa){
 		cosa.chocaConBomberman()
-		if(vidas>0){
-		game.removeVisual(self)
-		game.addVisual(self)
-		}
 	}
 	
+	
    method morir(){
-   	
-   	vidas -= 1
-    self.desaparece()
-   if (vidas > 0 ){
-   	game.schedule(1200,{self.position( self.recorrido().first()); game.removeTickEvent("bombermanMuere");image ="player_derec_0.png" ; direccion=true })
-   
-   } else {
-   	
-   	escenario.final()
-	final.inicio()
-   }
+   		estaVivo = false
+	    self.desaparece()
+	   	if (vidas > 1 ){
+	   		game.schedule(1200,{self.position( self.recorrido().first()); game.removeTickEvent("bombermanMuere");image ="player_derec_0.png" ; direccion=true; 
+	   		vidas -= 1; estaVivo = true})
+	   } 
+	   else {
+	   	game.schedule(1200, {
+		   	escenario.final()
+			final.inicio()
+	   	})
+	   }
    
    }
 	

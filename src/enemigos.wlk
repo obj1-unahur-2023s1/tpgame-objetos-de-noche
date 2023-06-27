@@ -44,7 +44,8 @@ class Enemigo {
 	}
 	
 	method chocaConBomberman(){
-		bomberman.morir()
+		if(bomberman.estaVivo())
+			bomberman.morir()
 	}
 	
 	method moverAutomaticamente(){
