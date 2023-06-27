@@ -101,8 +101,8 @@ class Fuego  {
 	method eliminarEnemigoEnPosicionSiHay(posicion){
 		 if(escenario.hayEnemigosEnPosicion(posicion)){
 			game.removeVisual(self)
-			escenario.devolverEnemigo(posicion).morir()
-		}//Deberia funcionar
+			escenario.devolverEnemigo(posicion).forEach({e => e.morir()})
+		}
 	}
 	
 	method mover(direccion){

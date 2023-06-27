@@ -111,7 +111,7 @@ object escenario{
 	
 	method hayBloquesBlandosEn(posicion) = aleatorio.posiciones().any({u => u == posicion})
 	
-	method devolverMuroBlando(posicion) = game.getObjectsIn(posicion) //.find({e => e.position() == posicion }) trate de hacerlo con find pero creo que es hasta una lista de 20 elementos max
+	method devolverMuroBlando(posicion) = game.getObjectsIn(posicion).first() //.find({e => e.position() == posicion }) trate de hacerlo con find pero creo que es hasta una lista de 20 elementos max
 	
 	method hayEnemigosEnPosicion(posicion) = enemigosGlobos.any({e => e.position() == posicion}) // Nuevo pregunta si hay enemigo
 	
