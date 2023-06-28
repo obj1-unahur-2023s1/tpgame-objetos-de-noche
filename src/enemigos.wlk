@@ -35,11 +35,17 @@ class Enemigo {
 			self.cambiarSentidoAleatoriamente()
 	}
 	
+	method cambiarSentidoAlEspacioLibre(){
+		const posiblesPosiciones =  escenario.posicionesLibresAlrededorDe(position)
+		if(posiblesPosiciones.size() > 0)
+			direccion = posiblesPosiciones.anyOne()
+	}
+	
 	method chocar(){
 		self.pararMovimientoAutomatico()
 		const newPos = recorrido.get(recorrido.size()-2)
 		self.position(newPos)
-		self.cambiarSentidoAleatoriamente()
+		self.cambiarSentidoAlEspacioLibre()
 		self.moverAutomaticamente()
 	}
 	
@@ -99,8 +105,8 @@ class Enemigo {
 		const nombreArchivo = nombreEnemigo + "_muere_"
 		const velocidadFinal = 300 * 5
 		animacion.animacion(nombreTick, 300, nombreArchivo, velocidadFinal, self)
-		game.schedule(velocidadFinal, {image = '100pt.png'})
-		game.schedule(velocidadFinal + 300,{ game.removeVisual(self); self.sacarDeLaLista()})
+		game.schedule(velocidadFinal, {image = self.puntaje().toString() + 'pt.png'})
+		game.schedule(velocidadFinal + 300,{ game.removeVisual(self); self.sacarDeLaLista(); bomberman.agregarPuntos(self.puntaje())})
 	}
 	
 	method sacarDeLaLista(){
@@ -116,5 +122,12 @@ class Globo inherits Enemigo{
 	override method puntaje() = 100
 
 	override method velocidad() = 500
+}
+
+class BloqueRojo inherits Enemigo{
+	override method nombre() = "bloque"
 	
+	override method puntaje() = 200
+
+	override method velocidad() = 400
 }

@@ -21,6 +21,8 @@ object bomberman {
 	var direccion = true
 	var vidas= 3
 	
+	var puntos = 0
+	
 	var property estaVivo = true
 	
 	 
@@ -102,6 +104,10 @@ object bomberman {
 	   	})
 	   }
    
+   }
+   
+   method agregarPuntos(puntosAAgregar){
+   	puntos += puntosAAgregar
    }
    
    method sacarBombas(){
