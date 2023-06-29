@@ -192,3 +192,9 @@ object vida{
 	
 	method image() = bomberman.vidas().toString() + "_vida.png"
 }
+
+object puntaje{
+	method position() = game.at(28,12)
+	// PARA ESTE METODO NECESITO QUE BOMBERRMAN ME DEVUELVA EL PUNTAJE QUE ACUMULA POR MATAR ENEMIGOS. El defecto es 0, incrementos de a 100.
+	//method image() = bomberman.puntaje().toString() + ".png"
+}
