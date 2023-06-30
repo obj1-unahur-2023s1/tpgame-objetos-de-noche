@@ -9,20 +9,34 @@ object inicial{
 	var property position = game.at(0,0)
 	var property musica = game.sound("Inicio.wav")
 	
-	method musicaON(){game.schedule(500, {musica.play()} )}
+	method musicaON(){game.schedule(500, {musica = game.sound("Inicio.wav");musica.play()} )} //EG
 	//method musicaON(){musica.play()}
-	method musicaOFF(){ if(!musica.paused()) musica.pause() }
+	method musicaOFF(){ /*if(!musica.paused())*/ musica.stop() } //EG
 	
 	method inicio(){
 		game.addVisual(self)
 		self.musicaON()
+		
+		keyboard.enter().onPressDo({ 
+			self.final()
+			escenario.inicio()
+			game.onCollideDo(bomberman,{cosa => bomberman.chocarEnemigo(cosa)})
+		})
+		
+		keyboard.up().onPressDo{game.sound("bomberman_vertical.wav").play();bomberman.arriba()}
+		keyboard.down().onPressDo{game.sound("bomberman_vertical.wav").play();bomberman.abajo()}
+		keyboard.right().onPressDo{game.sound("bomberman_horizontal.wav").play();bomberman.derecha() }
+		keyboard.left().onPressDo{game.sound("bomberman_horizontal.wav").play();bomberman.izquierda() }
+		keyboard.e().onPressDo({bomberman.explotaBombas()})
+		keyboard.x().onPressDo({bomberman.ponerBomba()})
+		
+		keyboard.q().onPressDo({game.stop()})
 	}
 	
 	method final(){
 		self.musicaOFF()
-		position.clear()
-		//game.clear()
-		//escenario.inicio()
+		//position.clear()
+		game.removeVisual(self)
 	}
 	
 }
@@ -48,26 +62,34 @@ object escenario{
 	method ubicacionesBlandos() = ubicacionesBlandos
 	
 	method musicaON(){
+		musica = game.sound("Nivel.wav")//EG
 		musica.shouldLoop(true)
 		musica.play()
 	}
 	method musicaOFF(){
-		if(!musica.paused())
-			musica.pause()
+		/*if(!musica.paused())*/
+			musica.stop()
 	}
 	
 	method inicio(){
+		keyboard.enter().onPressDo({}) //EG
 		self.ponerDuros()
 		self.ponerBlandos()
 		self.ponerEnemigosGlobos()
 		self.ponerEnemigosBloques()
 		self.ponerVidas()
+		self.ponerPuntaje()//EG
 		self.musicaON()
+		//bomberman.iniciar() //EG
 		game.addVisual(bomberman)
 	}
 	
 	method ponerVidas(){
 		game.addVisual(vida)
+	}
+	
+	method ponerPuntaje(){//EG
+		game.addVisual(puntaje)
 	}
 	
 	method ponerDuros(){
@@ -124,7 +146,7 @@ object escenario{
 		if(game.hasVisual(bomberman))
 			game.removeVisual(bomberman)
 	}
-	
+	//REVISAR LINEA 130
 	method posicionesLibresAlrededorDe(position) {
 		var posiciones = []
 		if(!self.hayAlgoEnPosicion(position.up(1)))
@@ -162,26 +184,28 @@ object final{
 	var property musica= game.sound("GameOver.wav")
 	
 	method inicio(){
-		//game.clear()
 		game.addVisual(self)
 		self.musicaON()
-		//self.musicaON()
+		keyboard.enter().onPressDo({self.final();inicial.inicio()}) //EG
 	}
 	
 	method final(){
 		self.musicaOFF()
-		position.clear()
-		//game.clear()
+		//inicial.inicio() //EG
+		//position.clear()
+		game.removeVisual(self)
+		game.clear() //EG
+		bomberman.iniciar()//EG
 	}
 	
 	method musicaON(){
-		musica.shouldLoop(true)
+		musica = game.sound("GameOver.wav")
+		//musica.shouldLoop(true) //EG
 		musica.play()
 	}
 	
 	method musicaOFF(){
-		//musica.shouldLoop(false)
-		musica.pause()
+		musica.stop()
 	}
 }
 
@@ -195,6 +219,5 @@ object vida{
 
 object puntaje{
 	method position() = game.at(28,12)
-	// PARA ESTE METODO NECESITO QUE BOMBERRMAN ME DEVUELVA EL PUNTAJE QUE ACUMULA POR MATAR ENEMIGOS. El defecto es 0, incrementos de a 100.
-	//method image() = bomberman.puntaje().toString() + ".png"
+	method image() = bomberman.puntos().toString() + ".png"
 }

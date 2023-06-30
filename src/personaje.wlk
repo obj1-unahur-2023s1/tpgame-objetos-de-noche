@@ -113,6 +113,8 @@ object bomberman {
    	puntos += puntosAAgregar
    }
    
+   method puntos() = puntos
+   
    method sacarBombas(){
    		bombasPlantadas.forEach({b => b.sacarBomba()})
    }
@@ -124,6 +126,7 @@ object bomberman {
 			
 		 	unaBomba = new Bomba(position = posActu )
 			game.addVisual(unaBomba)
+			game.sound("bomba_poner.wav").play()//EG
 			console.println(position)
 			bombasPlantadas.add(unaBomba)
 			bombasDisponibles --
@@ -135,6 +138,7 @@ object bomberman {
 			
 		 	unaBomba = new Bomba(position = posActu )
 			game.addVisual(unaBomba)
+		 	game.sound("bomba_poner.wav").play()//EG
 			bombasPlantadas.add(unaBomba)
 			bombasDisponibles --
 			self.ubicarBomba()
@@ -164,6 +168,7 @@ object bomberman {
  		const imagen = ["player_muere_0.png" ,"player_muere_1.png" , "player_muere_2.png","player_muere_3.png","player_muere_4.png","player_muere_5.png","player_muere_6.png","player_muere_7.png" ]
  		var i = 0
 		direccion = false
+		game.sound("bomberman_muere.wav").play() //EG
 		game.onTick(150,"bombermanMuere",{self.image(imagen.get(i%8)) ; i++})
 		
  	}
@@ -182,4 +187,18 @@ object bomberman {
 	method activarPasarBomba() {
 		pasarBomba =true
 	}
+	
+	method iniciar(){ //Para volver a iniciar a bomberman
+		position = game.at(1, 1)
+		image ="player_derec_0.png"
+		estaVivo = true
+		recorrido.clear()
+		bombasPlantadas.clear()
+		remotoActivo=false
+		direccion = true
+		vidas= 3
+		puntos = 0
+		//game.addVisual(self)
+	}
+	
 }

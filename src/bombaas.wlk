@@ -10,7 +10,7 @@ import animaciones.*
 class Bomba { // Al llamar a la clase con bomberman la bomba hace animacion de explotar y llama al fuego
 	var property image = "bomba_0.png"
 	const property position = bomberman.recorrido().last()
-	var property sound = "boom.wav"
+	//var property sound = "boom.wav" EG
 	const fuego = []
 	//var property alcance = 1
 	
