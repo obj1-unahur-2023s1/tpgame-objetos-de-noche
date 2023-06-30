@@ -56,6 +56,7 @@ class Bomba { // Al llamar a la clase con bomberman la bomba hace animacion de e
 		const expAbajo = new ExpAbajo(image="exp_0_abajo_2.png", position=position, bomba=self)
 		
 		game.schedule(3000,{
+			game.sound("bomba_explotar.wav").play()//EG
 			game.addVisual(expCentral);//funciona muestra fuego central y desaparece
 			expCentral.expandirFuego("centr", expCentral.imagenesExplosion(), 0)
 			game.addVisual(expDerecha)

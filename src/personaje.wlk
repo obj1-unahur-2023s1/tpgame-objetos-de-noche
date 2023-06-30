@@ -127,7 +127,7 @@ object bomberman {
 		 	unaBomba = new Bomba(position = posActu )
 			game.addVisual(unaBomba)
 			game.sound("bomba_poner.wav").play()//EG
-			console.println(position)
+			//console.println(position) //EG DE PRUEBA DE AH
 			bombasPlantadas.add(unaBomba)
 			bombasDisponibles --
 			self.ubicarBomba()
