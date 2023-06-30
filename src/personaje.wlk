@@ -121,7 +121,7 @@ object bomberman {
 	
 		method ponerBomba(){
 			const posActu = position
-			position = recorrido.get(recorrido.size() - 2)
+			position = recorrido.get(0.max(recorrido.size() - 2))//EG
 		if (recorrido.size() > 1 && bombasDisponibles > 0 && position != recorrido.get(0) && !remotoActivo){
 			
 		 	unaBomba = new Bomba(position = posActu )
@@ -198,6 +198,7 @@ object bomberman {
 		direccion = true
 		vidas= 3
 		puntos = 0
+		bombasDisponibles = 1
 		//game.addVisual(self)
 	}
 	

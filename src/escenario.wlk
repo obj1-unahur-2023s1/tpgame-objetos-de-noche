@@ -5,7 +5,7 @@ import enemigos.*
 import personaje.*
 import posiciones.*
 object inicial{
-	var property image = "Title.jpg"
+	var property image = "Title.png"
 	var property position = game.at(0,0)
 	var property musica = game.sound("Inicio.wav")
 	
@@ -22,21 +22,22 @@ object inicial{
 			escenario.inicio()
 			game.onCollideDo(bomberman,{cosa => bomberman.chocarEnemigo(cosa)})
 		})
-		
+		/*
 		keyboard.up().onPressDo{game.sound("bomberman_vertical.wav").play();bomberman.arriba()}
 		keyboard.down().onPressDo{game.sound("bomberman_vertical.wav").play();bomberman.abajo()}
 		keyboard.right().onPressDo{game.sound("bomberman_horizontal.wav").play();bomberman.derecha() }
 		keyboard.left().onPressDo{game.sound("bomberman_horizontal.wav").play();bomberman.izquierda() }
 		keyboard.e().onPressDo({bomberman.explotaBombas()})
 		keyboard.x().onPressDo({bomberman.ponerBomba()})
-		
+		*/
 		keyboard.q().onPressDo({game.stop()})
 	}
 	
 	method final(){
 		self.musicaOFF()
 		//position.clear()
-		game.removeVisual(self)
+		//game.removeVisual(self) //ESTO TRAE PROBLEMAS EG
+		game.clear()
 	}
 	
 }
@@ -73,6 +74,15 @@ object escenario{
 	
 	method inicio(){
 		keyboard.enter().onPressDo({}) //EG
+		//EG
+		keyboard.up().onPressDo{game.sound("bomberman_vertical.wav").play();bomberman.arriba()}
+		keyboard.down().onPressDo{game.sound("bomberman_vertical.wav").play();bomberman.abajo()}
+		keyboard.right().onPressDo{game.sound("bomberman_horizontal.wav").play();bomberman.derecha() }
+		keyboard.left().onPressDo{game.sound("bomberman_horizontal.wav").play();bomberman.izquierda() }
+		keyboard.e().onPressDo({bomberman.explotaBombas()})
+		keyboard.x().onPressDo({bomberman.ponerBomba()})
+		keyboard.q().onPressDo({game.stop()})
+		//EG
 		self.ponerDuros()
 		self.ponerBlandos()
 		self.ponerEnemigosGlobos()
@@ -80,7 +90,7 @@ object escenario{
 		self.ponerVidas()
 		self.ponerPuntaje()//EG
 		self.musicaON()
-		//bomberman.iniciar() //EG
+		bomberman.iniciar() //EG
 		game.addVisual(bomberman)
 	}
 	
@@ -131,6 +141,8 @@ object escenario{
 	method removerEmemigos(){
 		enemigosGlobos.forEach({p=>p.position().clear()})
 		enemigosBloques.forEach({p => p.position().clear()})
+		enemigosGlobos.clear()
+		enemigosBloques.clear()
 	}
 	
 	method removerBombas(){
@@ -195,7 +207,7 @@ object final{
 		//position.clear()
 		game.removeVisual(self)
 		game.clear() //EG
-		bomberman.iniciar()//EG
+		//bomberman.iniciar()//EG
 	}
 	
 	method musicaON(){
