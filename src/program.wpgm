@@ -30,8 +30,8 @@ program abc {
 	keyboard.down().onPressDo{bomberman.abajo()}
 	keyboard.right().onPressDo{bomberman.derecha() }
 	keyboard.left().onPressDo{bomberman.izquierda() }
-	
-	keyboard.x().onPressDo({bomberman.ponerBomba()})
+	keyboard.e().onPressDo({bomberman.explotaBombas()})
+	keyboard.p().onPressDo({bomberman.ponerBomba()})
 	
 	keyboard.q().onPressDo({
 		game.stop()

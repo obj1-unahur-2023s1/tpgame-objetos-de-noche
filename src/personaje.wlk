@@ -2,6 +2,7 @@ import wollok.game.*
 import bombaas.*
 import enemigos.*
 import escenario.*
+import aleatorio.*
 
 object bomberman {
 	const property recorrido=[game.at(1,1),game.at(2,1)] // game.at 2,1 esta pasado para hacer pruebas
@@ -29,7 +30,7 @@ object bomberman {
 	var bombasDisponibles = 1
 	var property pasarBomba = false
 	method vidas()= vidas
-		
+	
 	method agregarBombaDisponible(){
 		bombasDisponibles ++
 	}
@@ -39,6 +40,8 @@ object bomberman {
 			bombasPlantadas.remove(posicion)
 		}
 	}
+	
+	method pasarBomba()=pasarBomba
 	
 	method position() = position
 	
@@ -114,17 +117,49 @@ object bomberman {
    		bombasPlantadas.forEach({b => b.sacarBomba()})
    }
 	
-	method ponerBomba(){
-		if (recorrido.size() > 1 && bombasDisponibles > 0){
+		method ponerBomba(){
 			const posActu = position
 			position = recorrido.get(recorrido.size() - 2)
-		 	unaBomba = new Bomba(position = posActu)
+		if (recorrido.size() > 1 && bombasDisponibles > 0 && position != recorrido.get(0) && !remotoActivo){
+			
+		 	unaBomba = new Bomba(position = posActu )
+			game.addVisual(unaBomba)
+			console.println(position)
+			bombasPlantadas.add(unaBomba)
+			bombasDisponibles --
+			self.ubicarBomba()
+			self.ubicarBomberman()
+			
+			self.accionaBomba()
+		} else if (remotoActivo && bombasDisponibles > 0 ){
+			
+		 	unaBomba = new Bomba(position = posActu )
 			game.addVisual(unaBomba)
 			bombasPlantadas.add(unaBomba)
 			bombasDisponibles --
-			unaBomba.explotar()
-		}
+			self.ubicarBomba()
+			self.ubicarBomberman()}
 	}
+	
+	method accionaBomba(){
+		unaBomba.explotar()
+	}
+	method ubicarBomberman(){if (aleatorio.posiciones().any({u => u == self.position()})){
+		console.println(position)
+		game.removeVisual(self)
+		self.position(recorrido.get(recorrido.size() - 4))
+		game.addVisual(self)
+	} else if (bombasPlantadas.get(bombasPlantadas.size()-1) == self.position()){
+		game.removeVisual(self)
+		self.position(recorrido.get(recorrido.size() - 3))
+		game.addVisual(self)
+	}}
+		method ubicarBomba(){if (aleatorio.posiciones().any({u => u == unaBomba.position()})){
+		console.println(position)
+		game.removeVisual(unaBomba)
+		self.position(recorrido.get(recorrido.size() - 3))
+		game.addVisual(unaBomba)
+	}}
  	method desaparece (){
  		const imagen = ["player_muere_0.png" ,"player_muere_1.png" , "player_muere_2.png","player_muere_3.png","player_muere_4.png","player_muere_5.png","player_muere_6.png","player_muere_7.png" ]
  		var i = 0
@@ -133,11 +168,10 @@ object bomberman {
 		
  	}
 
-	method explotaBombas(){
-		game.removeTickEvent ("explota bomba")
-		game.removeVisual(bombasPlantadas.first())
-		bombasPlantadas.remove(bombasPlantadas.first())
-		bombasDisponibles ++
+	method explotaBombas(){if(remotoActivo){
+	bombasPlantadas.forEach({b=>b.explotar()})
+	bombasDisponibles ++
+	bombasPlantadas.clear()}
 	}
 	method activarMasBombas() {
 		bombasDisponibles ++
@@ -146,7 +180,6 @@ object bomberman {
 		remotoActivo = true
 	}
 	method activarPasarBomba() {
-		pasarBomba = false
+		pasarBomba =true
 	}
 }
-

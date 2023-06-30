@@ -22,7 +22,7 @@ class Bomba { // Al llamar a la clase con bomberman la bomba hace animacion de e
 	
 	method animacionBomba(){ // Animacion itera sobre la lista de imagenes y cambia el visual cada X tiempo, y borra el tick
 		var i = 0
-		game.onTick(300,"explosion",{self.image(imagenes.get(i%3))i++})
+		game.onTick(400,"explosion",{self.image(imagenes.get(i%3))i++})
 	}
 
 	method eliminar(tiempo,tick){
@@ -35,8 +35,8 @@ class Bomba { // Al llamar a la clase con bomberman la bomba hace animacion de e
 	}
 	
 	method chocaConBomberman(){
-		bomberman.position(bomberman.recorrido().get(bomberman.recorrido().size()-2))
-		
+			if (! bomberman.pasarBomba()){
+		bomberman.position(bomberman.recorrido().get(bomberman.recorrido().size()-2))}
 	}	
 	
 	
@@ -44,6 +44,7 @@ class Bomba { // Al llamar a la clase con bomberman la bomba hace animacion de e
 		self.animacionBomba() // inicia la bomba
 		self.eliminar(3000,"explosion") //  elimina la bomba
 		self.agregarFuego()// agrega fuego 
+		bomberman.bombasPlantadas().clear()
 	}
 
 

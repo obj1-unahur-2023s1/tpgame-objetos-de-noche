@@ -5,7 +5,7 @@ import enemigos.*
 import personaje.*
 import posiciones.*
 object inicial{
-	var property image = "Title.png"
+	var property image = "Title.jpg"
 	var property position = game.at(0,0)
 	var property musica = game.sound("Inicio.wav")
 	
@@ -157,7 +157,7 @@ object escenario{
 
 
 object final{
-	var property image = "GameOver.png"
+	var property image = "GameOver.jpg"
 	var property position = game.at(0,0)
 	var property musica= game.sound("GameOver.wav")
 	

@@ -46,10 +46,11 @@ class Blando{
 	}
 	
 	method dejarPower(){
-		if (powerUp) {game.addVisualIn(#{masBombas,controlRemoto,pasarATravezBomba}.anyOne(),position)}
+		if (powerUp) {game.addVisualIn([masBombas,controlRemoto,pasarATravezBomba].anyOne(),position)}
 	}
 	method eliminar(tiempo,tick){ 
 		game.schedule(tiempo,{
+			
 			game.removeVisual(self)
 		})
 	}
