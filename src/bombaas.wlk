@@ -54,7 +54,7 @@ class Bomba { // Al llamar a la clase con bomberman la bomba hace animacion de e
 		const expIzq = new ExpIzq(image="exp_0_izqui_2.png", position=position, bomba=self)
 		const expArriba = new ExpArriba(image="exp_0_arrib_2.png", position=position, bomba=self)
 		const expAbajo = new ExpAbajo(image="exp_0_abajo_2.png", position=position, bomba=self)
-		
+		if(bomberman.vidas()>0){
 		game.schedule(3000,{
 			game.sound("bomba_explotar.wav").play()//EG
 			game.addVisual(expCentral);//funciona muestra fuego central y desaparece
@@ -69,7 +69,7 @@ class Bomba { // Al llamar a la clase con bomberman la bomba hace animacion de e
  			expAbajo.expandirFuego("abajo", expAbajo.imagenesExplosion(), self.position().down(1))
 		})
 		game.schedule(4200, {bomberman.agregarBombaDisponible(); bomberman.sacarBombaPlantada(position)})
-	}
+	}}
 	
 	method chocarEnemigo(enemigo){
 		if(!enemigo.pasaBombas()){

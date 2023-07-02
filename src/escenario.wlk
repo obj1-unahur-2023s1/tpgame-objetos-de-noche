@@ -123,7 +123,7 @@ object escenario{
 	}
 	
 	method ponerEnemigosBloques(){
-		enemigosBloqueCantidad.times({i => enemigosBloques.add(new BloqueRojo(id = i, direccion = posiciones.anyOne()))})
+		enemigosBloqueCantidad.times({i => enemigosBloques.add(new BloqueRojo(id = i+4, direccion = posiciones.anyOne()))})
 		enemigosBloques.forEach({e => game.addVisual(e); e.moverAutomaticamente();
 			game.onCollideDo(e,{cosa => e.chocarCosa(cosa)})
 		})
@@ -157,6 +157,7 @@ object escenario{
 		self.removerBombas()
 		if(game.hasVisual(bomberman))
 			game.removeVisual(bomberman)
+		
 	}
 	//REVISAR LINEA 130
 	method posicionesLibresAlrededorDe(position) {

@@ -5,8 +5,7 @@ import escenario.*
 import aleatorio.*
 
 object bomberman {
-	const property recorrido=[game.at(1,1),game.at(2,1)] // game.at 2,1 esta pasado para hacer pruebas
-	
+	const property recorrido=[game.at(1,1)] 
 	var unaBomba
 	
 	var property e =1
@@ -94,11 +93,12 @@ object bomberman {
 	
    method morir(){
    		estaVivo = false
+   		vidas = vidas-1
 	 	self.sacarBombas()
 	    self.desaparece()
-	   	if (vidas > 1 ){
-	   		game.schedule(1200,{self.position( self.recorrido().first()); game.removeTickEvent("bombermanMuere");image ="player_derec_0.png" ; direccion=true; 
-	   		vidas -= 1; estaVivo = true;})
+	   	if (vidas > 0 ){
+	   		game.schedule(1200,{self.position( game.at(1,1)); game.removeTickEvent("bombermanMuere");image ="player_derec_0.png" ; direccion=true; 
+	   		 estaVivo = true;})
 	   } 
 	   else {
 	   	game.schedule(1200, {
@@ -122,7 +122,7 @@ object bomberman {
 		method ponerBomba(){
 			const posActu = position
 			position = recorrido.get(0.max(recorrido.size() - 2))//EG
-		if (recorrido.size() > 1 && bombasDisponibles > 0 && position != recorrido.get(0) && !remotoActivo){
+		if (recorrido.size() > 1 && bombasDisponibles > 0 && position != recorrido.get(0) && !remotoActivo && vidas>0){
 			
 		 	unaBomba = new Bomba(position = posActu )
 			game.addVisual(unaBomba)
@@ -134,7 +134,7 @@ object bomberman {
 			self.ubicarBomberman()
 			
 			self.accionaBomba()
-		} else if (remotoActivo && bombasDisponibles > 0 ){
+		} else if (remotoActivo && bombasDisponibles > 0 && vidas > 0 ){
 			
 		 	unaBomba = new Bomba(position = posActu )
 			game.addVisual(unaBomba)
@@ -146,16 +146,21 @@ object bomberman {
 	}
 	
 	method accionaBomba(){
-		unaBomba.explotar()
+		if(!(vidas==0)){
+		unaBomba.explotar() } else if (!(vidas==0) && remotoActivo){
+			unaBomba.agregarFuego()// agrega fuego 
+		self.bombasPlantadas().clear()}
 	}
+	
+	
 	method ubicarBomberman(){if (aleatorio.posiciones().any({u => u == self.position()})){
-		console.println(position)
+		//console.println(position)
 		game.removeVisual(self)
-		self.position(recorrido.get(recorrido.size() - 4))
+		self.position(recorrido.get(recorrido.size() -3))
 		game.addVisual(self)
 	} else if (bombasPlantadas.get(bombasPlantadas.size()-1) == self.position()){
 		game.removeVisual(self)
-		self.position(recorrido.get(recorrido.size() - 3))
+		self.position(recorrido.get(recorrido.size() - 2))
 		game.addVisual(self)
 	}}
 		method ubicarBomba(){if (aleatorio.posiciones().any({u => u == unaBomba.position()})){
