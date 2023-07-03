@@ -116,8 +116,8 @@ object escenario{
 	
 	method ponerEnemigosGlobos(){
 		enemigosGlobosCantidad.times({i => enemigosGlobos.add(new Globo(id = i, direccion = posiciones.anyOne()))})
-		enemigosGlobos.forEach({e => game.addVisual(e); e.moverAutomaticamente();
-			game.onCollideDo(e,{cosa => e.chocarCosa(cosa)})
+		enemigosGlobos.forEach({e => game.addVisual(e); e.moverAutomaticamente(); 
+			game.whenCollideDo(e,{cosa => e.chocarCosa(cosa)});
 		})
 		
 	}
@@ -139,8 +139,8 @@ object escenario{
 	}
 	
 	method removerEmemigos(){
-		enemigosGlobos.forEach({p=>p.position().clear()})
-		enemigosBloques.forEach({p => p.position().clear()})
+		enemigosGlobos.forEach({p=>p.pararMovimientoAutomatico(); if(game.hasVisual(p)) game.removeVisual(p)})
+		enemigosBloques.forEach({p => p.pararMovimientoAutomatico();if(game.hasVisual(p)) game.removeVisual(p)})
 		enemigosGlobos.clear()
 		enemigosBloques.clear()
 	}
@@ -157,6 +157,7 @@ object escenario{
 		self.removerBombas()
 		if(game.hasVisual(bomberman))
 			game.removeVisual(bomberman)
+		game.clear()
 		
 	}
 	//REVISAR LINEA 130
@@ -233,4 +234,5 @@ object vida{
 object puntaje{
 	method position() = game.at(28,12)
 	method image() = bomberman.puntos().toString() + ".png"
+	method chocarEnemigo(unEnemigo) {}
 }

@@ -102,6 +102,7 @@ object bomberman {
 	   } 
 	   else {
 	   	game.schedule(1200, {
+	   		console.println("muere bomberman 1")
 		   	escenario.final()
 			final.inicio()
 	   	})

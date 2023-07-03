@@ -11,7 +11,7 @@ import fuegos.*
 class Enemigo {
 	var property image = self.nombre() + "_derec_0.png"
 	var property position = aleatorio.position()
-	const recorrido = []
+	const recorrido = [position]
 	const id
 	var direccion
 	method nombre()
@@ -25,6 +25,10 @@ class Enemigo {
 	method direccion() = direccion
 	
 	method recorrido() = recorrido
+	
+	method agregarPosicion(unaPosicion) {
+		position.add(unaPosicion)
+	}
 	
 	method cambiarSentidoAleatoriamente(){
 		const aux = direccion
@@ -43,8 +47,10 @@ class Enemigo {
 	
 	method chocar(){
 		self.pararMovimientoAutomatico()
-		const newPos = recorrido.get(recorrido.size()-2)
-		self.position(newPos)
+		if(recorrido.size() >= 2){
+			const newPos = recorrido.get(recorrido.size()-2)
+			self.position(newPos)
+		}
 		self.cambiarSentidoAlEspacioLibre()
 		self.moverAutomaticamente()
 	}
@@ -55,20 +61,19 @@ class Enemigo {
 	}
 	
 	method moverAutomaticamente(){
-		recorrido.add(position)
-		game.onTick(self.velocidad(),"movimientoEnemigo_" + id , {
+		game.onTick(self.velocidad(),"movimientoEnemigo_"  + self.nombre() + "_" + id , {
 				self.moverseHacia(direccion)
 		})
 	}
 	
 	method pararMovimientoAutomatico(){
-		game.removeTickEvent("movimientoEnemigo_" + id)
+		game.removeTickEvent("movimientoEnemigo_"  + self.nombre() + "_" + id)
 	}
 	
 	method moverseHacia(unaDireccion) {
 		position = unaDireccion.mover(position)
 		recorrido.add(position)
-		if(unaDireccion.id() == este.id())
+		if(unaDireccion == este)
 			self.seMueveHaciaDer()
 		else
 			self.seMueveHaciaIzq()
@@ -110,9 +115,6 @@ class Enemigo {
 	}
 	
 	method sacarDeLaLista(){
-		if (escenario.enemigosGlobos().contains(self)){
-			escenario.enemigosGlobos().remove(self)
-		}
 	}
 }
 
@@ -121,7 +123,13 @@ class Globo inherits Enemigo{
 	
 	override method puntaje() = 100
 
-	override method velocidad() = 500
+	override method velocidad() = 750
+	
+	override method sacarDeLaLista(){
+		if (escenario.enemigosGlobos().contains(self)){
+			escenario.enemigosGlobos().remove(self)
+		}
+	}
 }
 
 class BloqueRojo inherits Enemigo{
@@ -130,4 +138,14 @@ class BloqueRojo inherits Enemigo{
 	override method puntaje() = 200
 
 	override method velocidad() = 400
+	
+	override method pasaParedesBlandas() = true
+	
+	override method pasaBombas() = true
+	
+	override method sacarDeLaLista(){
+		if (escenario.enemigosBloques().contains(self)){
+			escenario.enemigosBloques().remove(self)
+		}
+	}
 }
