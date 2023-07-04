@@ -74,7 +74,7 @@ Tal como lo indica el nombre del juego, este es el arma principal de nuestro per
 
 | Imagen | Nombre | Efectos sobre Bomberman |
 |-----------|-----------|-----------|
-| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/1c7fc7c3-628c-4b95-8eda-77aa91e974f4)   | Skate  | Aumenta la velocidad de Bomberman en 1  |
+| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/9ee8b94b-4908-418b-ae5d-c521dbf4483a)   | Pase Bomba | Pueda pasar por encima de sus bombas  |
 | ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/4535da56-7b79-462b-a854-4f79bbadbc71) | Control Remoto | Las bombas pueden ser detonadas de manera remota |
 | ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/9ee8b94b-4908-418b-ae5d-c521dbf4483a)   | Pase Bomba | Pueda pasar por encima de sus bombas  |
 
