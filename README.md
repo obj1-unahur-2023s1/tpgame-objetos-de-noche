@@ -84,7 +84,7 @@ Tal como lo indica el nombre del juego, este es el arma principal de nuestro per
 | Imagen | Nombre | Puntos | Velocidad | Movimiento | Inteligencia | Cómo eliminarlo | Características extra |
 |-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
 | ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/c8da1438-5808-4efb-9cc5-1532f108a104)   | Valcom el Globo  | 100 | 2 (Lento) | Es de N-S o E-O | 1 (no persigue) | Basta una exploción de bomba | Cuando rebota cambia aleatoriamente el sentido de movimiento. |
-| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/9f9e3d8e-41ad-4c5b-9f97-9424b7c410ea)   | Dahl el Bloque  | 200  | 3 (Normal) | Es de N-S o E-O | 1 (no persigue) |  Basta una exploción de bomba | Puede atravesar bloques débiles y bombas.  |
+| ![image](https://github.com/obj1-unahur-2023s1/tpgame-objetos-de-noche/assets/111536876/9f9e3d8e-41ad-4c5b-9f97-9424b7c410ea)   | Dahl el Bloque  | 200  | 1 (lento) | Es de N-S o E-O | 1 (no persigue) |  Basta una exploción de bomba | Puede atravesar bloques débiles y bombas.  |
 
 
 ### Puerta de nivel
