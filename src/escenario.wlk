@@ -201,6 +201,7 @@ object final{
 		game.addVisual(self)
 		self.musicaON()
 		keyboard.enter().onPressDo({self.final();inicial.inicio()}) //EG
+		keyboard.q().onPressDo({game.stop()}) //EG
 	}
 	
 	method final(){
@@ -229,6 +230,7 @@ object vida{
 	method position() = game.at(0,12)
 	
 	method image() = bomberman.vidas().toString() + "_vida.png"
+	method chocarEnemigo(enemigo){}
 }
 
 object puntaje{
