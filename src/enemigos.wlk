@@ -137,7 +137,7 @@ class BloqueRojo inherits Enemigo{
 	
 	override method puntaje() = 200
 
-	override method velocidad() = 400
+	override method velocidad() = 1250
 	
 	override method pasaParedesBlandas() = true
 	
