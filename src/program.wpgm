@@ -1,0 +1,18 @@
+import bloques.*
+import escenario.*
+import wollok.game.*
+import personaje.*
+import enemigos.*
+
+program abc {
+	game.cellSize(32) //era 16
+	game.boardGround("Playfield.png")
+ 	game.height(13)
+ 	game.width(31)
+	
+	inicial.inicio()
+	
+
+	game.start()
+	
+}
